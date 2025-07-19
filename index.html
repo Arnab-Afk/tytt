@@ -2,104 +2,219 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Timetable</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Weekly Timetable</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f2f2f2;
     }
-    table {
-      border-collapse: collapse;
-      width: 100%;
+
+    h2 {
       text-align: center;
+      margin-bottom: 20px;
     }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
     th, td {
-      border: 1px solid #555;
+      border: 1px solid #444;
       padding: 10px;
+      text-align: center;
       vertical-align: top;
     }
+
     th {
       background-color: #333;
       color: white;
     }
-    td {
-      background-color: #f9f9f9;
-    }
+
     .lunch {
       background-color: #ffeeba;
       font-weight: bold;
     }
+
     .lab {
       background-color: #d1ecf1;
     }
+
     .theory {
       background-color: #d4edda;
     }
+
     .tutorial {
       background-color: #f8d7da;
+    }
+
+    /* Hide desktop table on small screens */
+    @media screen and (max-width: 768px) {
+      table {
+        display: none;
+      }
+
+      .mobile-cards {
+        display: block;
+      }
+
+      .day-card {
+        background: white;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+
+      .day-card h3 {
+        margin-top: 0;
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .session {
+        margin: 10px 0;
+        padding: 10px;
+        border-left: 5px solid #ccc;
+        background: #f9f9f9;
+      }
+
+      .lab { border-left-color: #0dcaf0; }
+      .theory { border-left-color: #198754; }
+      .tutorial { border-left-color: #dc3545; }
+      .lunch { border-left-color: #ffc107; background: #fff3cd; font-weight: bold; }
+    }
+
+    /* Hide mobile cards on desktop */
+    @media screen and (min-width: 769px) {
+      .mobile-cards {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
 
-<h2 style="text-align:center;">Weekly Timetable</h2>
+<h2>Weekly Timetable</h2>
 
+<!-- Desktop Table View -->
 <table>
-  <tr>
-    <th>Time</th>
-    <th>Monday</th>
-    <th>Tuesday</th>
-    <th>Wednesday</th>
-    <th>Thursday</th>
-    <th>Friday</th>
-  </tr>
-  <tr>
-    <td>9:00 - 10:00</td>
-    <td rowspan="2" class="lab">CSF Lab<br>CCF</td>
-    <td rowspan="2" class="lab">STQA Lab<br>B210</td>
-    <td></td>
-    <td class="theory">CN Theory<br>B202</td>
-    <td class="tutorial">FSD Tutorial<br>B205</td>
-  </tr>
-  <tr>
-    <td>10:00 - 11:00</td>
-    <td class="theory">CSF Theory<br>B204</td>
-    <td class="theory">CSF Theory<br>B204</td>
-    <td class="theory">CSF Theory<br>B204</td>
-  </tr>
-  <tr>
-    <td>11:00 - 12:00</td>
-    <td class="theory">TOA Theory<br>B205</td>
-    <td class="theory">SE Theory<br>B204</td>
-    <td></td>
-    <td rowspan="2" class="lab">CN Lab<br>B217</td>
-    <td class="theory">TOA Theory<br>B301</td>
-  </tr>
-  <tr>
-    <td>12:00 - 1:00</td>
-    <td class="theory">STQA Theory<br>B205</td>
-    <td class="theory">STQA Theory<br>B205</td>
-    <td class="theory">TOA Theory<br>B204</td>
-    <td class="theory">CN Theory<br>B301</td>
-  </tr>
-  <tr>
-    <td class="lunch">1:00 - 2:00</td>
-    <td class="lunch" colspan="5">Lunch Break</td>
-  </tr>
-  <tr>
-    <td>2:00 - 3:00</td>
-    <td rowspan="2" class="lab">SE Lab<br>CCF</td>
-    <td rowspan="2" class="lab">FSD Lab<br>B207</td>
-    <td class="theory">CN Theory<br>B301</td>
-    <td class="theory">SE Theory<br>B205</td>
-    <td class="theory">SE Theory<br>B301</td>
-  </tr>
-  <tr>
-    <td>3:00 - 4:00</td>
-    <td class="theory">STQA Theory<br>B205</td>
-    <td class="tutorial">TOA Tutorial<br>B505</td>
-    <td></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Monday</th>
+      <th>Tuesday</th>
+      <th>Wednesday</th>
+      <th>Thursday</th>
+      <th>Friday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9:00 - 10:00</td>
+      <td rowspan="2" class="lab">CSF Lab<br>CCF</td>
+      <td rowspan="2" class="lab">STQA Lab<br>B210</td>
+      <td></td>
+      <td class="theory">CN Theory<br>B202</td>
+      <td class="tutorial">FSD Tutorial<br>B205</td>
+    </tr>
+    <tr>
+      <td>10:00 - 11:00</td>
+      <td class="theory">CSF Theory<br>B204</td>
+      <td class="theory">CSF Theory<br>B204</td>
+      <td class="theory">CSF Theory<br>B204</td>
+    </tr>
+    <tr>
+      <td>11:00 - 12:00</td>
+      <td class="theory">TOA Theory<br>B205</td>
+      <td class="theory">SE Theory<br>B204</td>
+      <td></td>
+      <td rowspan="2" class="lab">CN Lab<br>B217</td>
+      <td class="theory">TOA Theory<br>B301</td>
+    </tr>
+    <tr>
+      <td>12:00 - 1:00</td>
+      <td class="theory">STQA Theory<br>B205</td>
+      <td class="theory">STQA Theory<br>B205</td>
+      <td class="theory">TOA Theory<br>B204</td>
+      <td class="theory">CN Theory<br>B301</td>
+    </tr>
+    <tr>
+      <td class="lunch">1:00 - 2:00</td>
+      <td class="lunch" colspan="5">Lunch Break</td>
+    </tr>
+    <tr>
+      <td>2:00 - 3:00</td>
+      <td rowspan="2" class="lab">SE Lab<br>CCF</td>
+      <td rowspan="2" class="lab">FSD Lab<br>B207</td>
+      <td class="theory">CN Theory<br>B301</td>
+      <td class="theory">SE Theory<br>B205</td>
+      <td class="theory">SE Theory<br>B301</td>
+    </tr>
+    <tr>
+      <td>3:00 - 4:00</td>
+      <td class="theory">STQA Theory<br>B205</td>
+      <td class="tutorial">TOA Tutorial<br>B505</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
+
+<!-- Mobile Cards View -->
+<div class="mobile-cards">
+  <div class="day-card">
+    <h3>Monday</h3>
+    <div class="session lab">9:00–11:00 — CSF Lab (CCF)</div>
+    <div class="session theory">11:00–12:00 — TOA Theory (B205)</div>
+    <div class="session theory">12:00–1:00 — STQA Theory (B205)</div>
+    <div class="session lunch">1:00–2:00 — Lunch Break</div>
+    <div class="session lab">2:00–4:00 — SE Lab (CCF)</div>
+  </div>
+
+  <div class="day-card">
+    <h3>Tuesday</h3>
+    <div class="session lab">9:00–11:00 — STQA Lab (B210)</div>
+    <div class="session theory">11:00–12:00 — SE Theory (B204)</div>
+    <div class="session theory">12:00–1:00 — STQA Theory (B205)</div>
+    <div class="session lunch">1:00–2:00 — Lunch Break</div>
+    <div class="session lab">2:00–4:00 — FSD Lab (B207)</div>
+  </div>
+
+  <div class="day-card">
+    <h3>Wednesday</h3>
+    <div class="session theory">10:00–11:00 — CSF Theory (B204)</div>
+    <div class="session theory">12:00–1:00 — TOA Theory (B204)</div>
+    <div class="session lunch">1:00–2:00 — Lunch Break</div>
+    <div class="session theory">2:00–3:00 — CN Theory (B301)</div>
+    <div class="session theory">3:00–4:00 — STQA Theory (B205)</div>
+  </div>
+
+  <div class="day-card">
+    <h3>Thursday</h3>
+    <div class="session theory">9:00–10:00 — CN Theory (B202)</div>
+    <div class="session theory">10:00–11:00 — CSF Theory (B204)</div>
+    <div class="session lab">11:00–1:00 — CN Lab (B217)</div>
+    <div class="session lunch">1:00–2:00 — Lunch Break</div>
+    <div class="session theory">2:00–3:00 — SE Theory (B205)</div>
+    <div class="session tutorial">3:00–4:00 — TOA Tutorial (B505)</div>
+  </div>
+
+  <div class="day-card">
+    <h3>Friday</h3>
+    <div class="session tutorial">9:00–10:00 — FSD Tutorial (B205)</div>
+    <div class="session theory">10:00–11:00 — CSF Theory (B204)</div>
+    <div class="session theory">11:00–12:00 — TOA Theory (B301)</div>
+    <div class="session theory">12:00–1:00 — CN Theory (B301)</div>
+    <div class="session lunch">1:00–2:00 — Lunch Break</div>
+    <div class="session theory">2:00–3:00 — SE Theory (B301)</div>
+  </div>
+</div>
 
 </body>
 </html>
